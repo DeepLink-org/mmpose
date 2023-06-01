@@ -3,6 +3,11 @@ import argparse
 import os
 import os.path as osp
 
+import capture
+device = os.getenv('ONE_ITER_TOOL_DEVICE', None)
+if device == 'dipu':
+    import torch_dipu
+
 from mmengine.config import Config, DictAction
 from mmengine.runner import Runner
 
@@ -151,6 +156,8 @@ def main():
 
     # build the runner from config
     runner = Runner.from_cfg(cfg)
+
+    capture.insert_capture(runner)
 
     # start training
     runner.train()
