@@ -1,7 +1,7 @@
 _base_ = ['../../../_base_/default_runtime.py']
 
 # runtime
-train_cfg = dict(max_epochs=3, val_interval=1)
+train_cfg = dict(max_epochs=210, val_interval=10)
 
 # optimizer
 optim_wrapper = dict(optimizer=dict(
@@ -113,7 +113,7 @@ val_pipeline = [
 
 # data loaders
 train_dataloader = dict(
-    batch_size=4,
+    batch_size=2,
     num_workers=0,
     persistent_workers=False,
     sampler=dict(type='DefaultSampler', shuffle=False),
@@ -126,7 +126,7 @@ train_dataloader = dict(
         pipeline=train_pipeline,
     ))
 val_dataloader = dict(
-    batch_size=4,
+    batch_size=2,
     num_workers=0,
     persistent_workers=False,
     drop_last=False,
