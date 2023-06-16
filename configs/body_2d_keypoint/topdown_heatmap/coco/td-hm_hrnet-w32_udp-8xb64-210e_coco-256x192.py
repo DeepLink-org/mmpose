@@ -7,6 +7,7 @@ train_cfg = dict(max_epochs=210, val_interval=10)
 optim_wrapper = dict(optimizer=dict(
     type='Adam',
     lr=5e-4,
+    foreach=False
 ))
 
 # learning policy
@@ -112,7 +113,7 @@ val_pipeline = [
 
 # data loaders
 train_dataloader = dict(
-    batch_size=64,
+    batch_size=2,
     num_workers=2,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
@@ -125,7 +126,7 @@ train_dataloader = dict(
         pipeline=train_pipeline,
     ))
 val_dataloader = dict(
-    batch_size=32,
+    batch_size=2,
     num_workers=2,
     persistent_workers=True,
     drop_last=False,

@@ -3,6 +3,8 @@ import argparse
 import os
 import os.path as osp
 
+import capture
+
 from mmengine.config import Config, DictAction
 from mmengine.runner import Runner
 
@@ -152,6 +154,8 @@ def main():
     # build the runner from config
     runner = Runner.from_cfg(cfg)
 
+    capture.insert_capture(runner)
+    
     # start training
     runner.train()
 
