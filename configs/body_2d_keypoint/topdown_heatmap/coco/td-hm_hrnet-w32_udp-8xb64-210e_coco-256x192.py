@@ -1,5 +1,4 @@
 _base_ = ['../../../_base_/default_runtime.py']
-checkpoint='/mnt/lustre/share_data/PAT/datasets/mmpose/pretrain/hrnet_w32-36af842e.pth'
 
 # runtime
 train_cfg = dict(max_epochs=210, val_interval=10)
@@ -73,7 +72,7 @@ model = dict(
                 num_channels=(32, 64, 128, 256))),
         init_cfg=dict(
             type='Pretrained',
-            checkpoint=checkpoint),
+            checkpoint='data/hrnet_w32-36af842e.pth'),
     ),
     head=dict(
         type='HeatmapHead',
